@@ -1,21 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
 const connection = require('../config/connection');
 
-class Course extends Model { }
+class SSM extends Model { }
 
-Course.init({
-  title: {
+SSM.init({
+  email: {
+    type: DataTypes.STRING,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  name: {
     type: DataTypes.STRING
   },
-  instructor: {
-    type: DataTypes.STRING
-  },
-  cost: {
+  age: {
     type: DataTypes.INTEGER
   }
 }, {
   sequelize: connection,
-  modelName: 'course'
+  modelName: 'ssm'
 });
 
-module.exports = Course; 
+module.exports = SSM; 
